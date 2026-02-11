@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kızılay Trust Trading GmbH</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+/* --- GENEL TEMELLER --- */
+:root {
+  --primary-red: #C73A3A;
+  --dark-blue: #1E355E;
+  --header-bg-red: #e12b2b;
+  --accent-blue: #002e94;
+  --footer-dark: #1e2630;
+  --footer-orange: #e95440;
+  --green-call: #00b853;
+}
+
+body {
+  margin:0;
+  padding-top:80px;
+  font-family:'Inter',sans-serif;
+  color:#333;
+  scroll-behavior:smooth;
+  background:#fafafa;
+}
+
+.container {
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* --- YENİ HEADER (GÖRSEL 2 STYLE) --- */
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  background:white;
+  box-shadow:0 2px 15px rgba(0,0,0,0.05);
+  z-index:999;
+  height: 80px;
+}
+
+nav .container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height: 100%;
+  padding: 0;
+}
+
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { text-decoration:none; color: #333; font-weight:700; font-size: 14px; }
+.nav-links a:hover { color: var(--primary-red); }
+
+.header-right { display: flex; align-items: center; height: 100%; }
+.header-cta-block {
+    background: var(--header-bg-red);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
+}
+.reserve-btn {
+    background: var(--accent-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 14px;
+}
+.header-phone { display: flex; align-items: center; gap: 10px; }
+.header-phone i {
+    background: var(--accent-blue);
+    width: 32px; height: 32px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.phone-text span { display: block; font-size: 11px; opacity: 0.9; }
+.phone-text b { font-size: 14px; }
+
+/* --- HERO & GENEL SECTION --- */
+.hero {
+  position:relative;
+  background:url('visaheader.jpg') center/cover no-repeat;
+  color:white;
+  margin-bottom: 69px;
+  padding:200px 0 160px;
+  text-align:center;
+}
+.hero::before {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+}
+.hero .container { position:relative; z-index:2; }
+.hero h1 { font-size:56px; margin-bottom:20px; }
+.btn { padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:600; margin:10px; display:inline-block; transition:all 0.3s ease; cursor:pointer; }
+.primary { background:#C73A3A; color:white; }
+.secondary { border:2px solid white; color:white; background:transparent; }
+.section { padding:120px 0; text-align:center; }
+.section h2 { font-size:42px; margin-bottom:60px; color:#1E355E; position:relative; display:inline-block; }
+.section h2::after { content:''; position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:linear-gradient(to right, #C73A3A, #ff6b6b); border-radius:2px; }
+
+/* --- KARTLAR (HİZMETLER) --- */
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:30px; max-width:1100px; margin:0 auto; }
+.card { background:white; padding:50px 30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08); position:relative; overflow:hidden; transition: 0.4s; }
+.icon { font-size:50px; margin-bottom:25px; }
+.card h3 { font-size:22px; margin-bottom:15px; color:#ffffff; }
+
+/* --- SÜREÇ BÖLÜMÜ (PREMIUM DARK BLUE) --- */
+#surec {
+    background: #001e4d; /* Ana zemin rengi */
+    position: relative; 
+    overflow: hidden; 
+    padding: 120px 0;
+    color: white;
+}
+
+#surec::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Sadece senin PNG görselin */
+    background-image: url('dotsworld.png');
+    
+    background-position: center center; /* Görseli tam ortaya koyar */
+    background-repeat: no-repeat;       /* Görselin tekrar etmesini engeller */
+    background-size: contain;           /* Görselin tamamını kutuya sığdırır */
+    
+    opacity: 0.9; /* Görselin netliği (0.1 ile 1.0 arası ayarlanabilir) */
+    z-index: 1;
+}
+
+/* İçeriğin görselin üstünde kalması için */
+#surec .container {
+    position: relative;
+    z-index: 2;
+}
+.process-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+    margin-bottom: 60px; 
+    position: relative; 
+    z-index: 2;
+}
+
+.process-header-left h3 { 
+    color: #ef4444; 
+    font-size: 14px; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Başlığın solundaki küçük uçak/ok ikonu */
+.process-header-left h3::before {
+    content: '\f1d8'; /* FontAwesome Paper Plane */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.process-header-left h2 { 
+    font-size: 42px; 
+    line-height: 1.1; 
+    font-weight: 700;
+    max-width: 500px;
+}
+
+/* Kartlar ve Çizgi Yapısı */
+#surec .grid { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0; /* Aradaki çizgileri birleştirmek için gap 0 */
+    position: relative;
+    z-index: 2;
+}
+
+#surec .card {
+    background: transparent; 
+    border: none; 
+    padding: 0 30px 40px 0; /* Sağdan boşluk bırakarak çizgiyi ayarlar */
+    position: relative;
+}
+
+/* Görseldeki o meşhur kesikli çizgi ve lazer efekti */
+#surec .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%; /* Çizginin uzunluğu */
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0.2) 50%, 
+        transparent 50%);
+    background-size: 10px 1px; /* Kesikli görünüm */
+}
+
+
+.process-card-icon { 
+    color: #ef4444; /* Görseldeki gibi check ikonları kırmızı */
+    font-size: 20px; 
+    margin-bottom: 25px; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.process-card-title { 
+    font-size: 24px; 
+    font-weight: 600; 
+    margin-bottom: 20px; 
+    color: white; 
+}
+
+.process-card-description { 
+    font-size: 15px; 
+    line-height: 1.7; 
+    color: rgba(255,255,255,0.7); 
+}
+
+/* Sağ üstteki kırmızı buton */
+.process-btn {
+    background: #ef4444;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px; 
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* --- HAKKIMIZDA BÖLÜMÜ (GÖRSEL STYLE) --- */
+.about-section { 
+  padding:120px 0; 
+  background:#f5f5f5; 
+  position:relative; 
+}
+.about-container { 
+  display:grid; 
+  grid-template-columns:1fr 1fr; 
+  gap:80px; 
+  align-items:center; 
+}
+.about-left { 
+  position:relative; 
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Yeşil Çağrı Kartı */
+.green-call-card {
+  position:absolute;
+  top:-30px;
+  left:-30px;
+  background:var(--green-call);
+  color:white;
+  padding:20px 30px;
+  border-radius:12px;
+  box-shadow:0 15px 40px rgba(0,184,83,0.3);
+  z-index:10;
+}
+.green-call-title {
+  font-size:13px;
+  margin-bottom:8px;
+  opacity:0.95;
+}
+.green-call-number {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:20px;
+  font-weight:700;
+}
+.green-call-number i {
+  background:white;
+  color:var(--green-call);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+}
+
+/* Resim */
+.about-image-wrapper { 
+  border-radius:20px; 
+  overflow:hidden; 
+  box-shadow:0 20px 50px rgba(0,0,0,0.15); 
+  max-width:600px;
+}
+.about-image-wrapper img { 
+  width:100%; 
+  display:block; 
+}
+
+/* Beyaz Güvenilirlik Kartı */
+.trust-card {
+  position:absolute;
+  bottom:30px;
+  left:30px;
+  background:white;
+  padding:25px 30px;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+  min-width:260px;
+  z-index:10;
+}
+.trust-label {
+  font-size:13px;
+  color:#666;
+  margin-bottom:8px;
+}
+.trust-number {
+  font-size:36px;
+  font-weight:700;
+  color:#1e3c72;
+  margin-bottom:15px;
+}
+.trust-countries {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding-top:15px;
+  border-top:1px solid #e0e0e0;
+  margin-bottom:5px;
+}
+.trust-countries span {
+  font-size:18px;
+  font-weight:600;
+}
+.trust-text {
+  font-size:13px;
+  color:#666;
+  margin-bottom:10px;
+}
+.trust-service {
+  font-size:13px;
+  color:#666;
+  padding-top:10px;
+  border-top:1px solid #e0e0e0;
+}
+
+/* Sağ Taraf İçerik */
+.about-right {
+  padding-left:20px;
+}
+.about-tag { 
+  color:#ef4444; 
+  font-size:12px; 
+  font-weight:700; 
+  text-transform:uppercase; 
+  letter-spacing:1.5px;
+  margin-bottom:15px; 
+  display:flex; 
+  align-items:center; 
+  gap:8px; 
+}
+.about-title { 
+  font-size:42px; 
+  line-height:1.2; 
+  color:#1E355E; 
+  margin-bottom:15px;
+  font-weight:700;
+}
+.red-underline {
+  width:60px;
+  height:3px;
+  background:#ef4444;
+  margin-bottom:25px;
+}
+.about-description {
+  font-size:15px;
+  line-height:1.8;
+  color:#666;
+  margin-bottom:30px;
+}
+.feature-grid { 
+  display:grid; 
+  grid-template-columns:1fr 1fr; 
+  gap:25px; 
+  margin-bottom:30px; 
+}
+.feature-item { 
+  display:flex; 
+  align-items:flex-start; 
+  gap:15px; 
+}
+.feature-icon { 
+  width:50px; 
+  height:50px; 
+  background:#fef2f2; 
+  border-radius:12px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  flex-shrink:0; 
+  font-size:24px; 
+}
+.feature-text h4 {
+  font-size:15px;
+  font-weight:700;
+  color:#1E355E;
+  margin:0;
+  line-height:1.4;
+}
+.check-list {
+  margin-bottom:35px;
+}
+.check-item {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+  font-size:14px;
+  color:#555;
+}
+.check-item:last-child {
+  margin-bottom:0;
+}
+.check-icon {
+  color:#ef4444;
+  font-size:18px;
+  flex-shrink:0;
+}
+
+/* --- YENİ FOOTER (GÖRSEL 1 STYLE) --- */
+/* 1. Üst Bilgi Şeridi (Hemen Arayın vs.) */
+/* 1. Üst Bilgi Şeridi (Hemen Arayın vb.) */
+.footer-info-bar { 
+    background: #002e94; 
+    color: white; 
+    padding: 25px 0; 
+}
+
+.footer-info-bar .container { 
+    display: flex; 
+    justify-content: space-around; 
+    text-align: center; 
+}
+
+/* 2. Ana Arka Plan Alanı */
+footer { 
+    background: #1e2630; 
+    color: #fff; 
+    padding: 80px 0 0; 
+}
+
+.footer-main { 
+    display: grid; 
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr; 
+    gap: 40px; 
+    padding-bottom: 60px; 
+}
+
+/* 3. Logo ve Başlıklar */
+.footer-logo { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: white; 
+    text-decoration: none; 
+    margin-bottom: 20px; 
+    display: flex; /* Logo ve TRUST yan yana düzgün durması için */
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo span { 
+    color: #C73A3A; 
+}
+
+.footer-logo img {
+    height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover img {
+    transform: scale(1.05); /* Logo üzerine gelince hafif büyür */
+}
+
+.footer-col h3 { 
+    font-size: 20px; 
+    margin-bottom: 25px; 
+    color: white; 
+    position: relative;
+}
+
+/* 4. Linkler ve Hover Etkisi */
+.footer-col ul li {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a { 
+    color: #adb5bd; 
+    text-decoration: none; 
+    font-size: 14px; 
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover { 
+    color: #C73A3A; 
+    padding-left: 8px; /* Sağa hafif esneme efekti */
+}
+
+/* Sosyal Medya İkonları (Ekstra) */
+.social-icon-footer {
+    color: white;
+    background: #C73A3A;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-right: 8px;
+}
+
+.social-icon-footer:hover {
+    background: white;
+    color: #C73A3A;
+    transform: translateY(-3px);
+}
+
+/* 5. Bülten / Abone Ol Butonu */
+.sub-btn { 
+    background: #C73A3A; 
+    color: white; 
+    border: none; 
+    width: 100%; 
+    padding: 14px; 
+    font-weight: 700; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+}
+
+.sub-btn:hover {
+    background: #a92f2f;
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 6. En Alt Bant (İstediğin Gibi Alt Alta ve Ortalı) */
+.footer-bottom { 
+    background: #e12b2b; 
+    padding: 25px 0; 
+    font-size: 13px; 
+    color: white; 
+}
+
+.footer-bottom .container { 
+    display: flex; 
+    flex-direction: column; /* Alt alta dizer */
+    align-items: center;    /* Yatayda ortalar */
+    gap: 8px;              /* Aradaki boşluk */
+    text-align: center;
+}
+
+.footer-bottom a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer-bottom a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+@media(max-width:968px){
+  .nav-links, .header-cta-block { display: none; }
+  #surec .grid, .about-container, .footer-main { grid-template-columns: 1fr; }
+  .process-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .green-call-card, .trust-card { position: static; margin-bottom: 20px; }
+  .feature-grid { grid-template-columns: 1fr; }
+}
+/* Bayrak görselleri için özel ayar */
+.flag-icon {
+    width: 28px;        /* İdeal boyut */
+    height: 28px;       /* Bayrak en-boy oranı */
+    object-fit: cover;
+    border-radius: 2px; /* Köşeleri hafif yuvarlatır, daha modern durur */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Çok hafif derinlik */
+}
+
+/* Artı işareti için */
+.plus-sign {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1E355E;
+    margin-left: 2px;
+}
+
+/* Konteyner zaten sendeki kodda flex, mesafeyi buradan ayarla */
+.trust-countries {
+    display: flex;
+    gap: 8px;           /* Bayraklar arası boşluk */
+    align-items: center;
+}
+/* Yeşil Kartın Temel Hali */
+.green-call-card {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: absolute; /* Mevcut konumlandırmanı korumak için */
+    overflow: hidden;
+}
+
+/* 1. Kartın Üzerine Gelindiğinde (Hover) */
+.green-call-card:hover {
+    transform: translateY(-5px) scale(1.03); /* Hafif yukarı kalkar ve büyür */
+    box-shadow: 0 15px 35px rgba(0, 184, 83, 0.4); /* Yeşil gölge derinleşir */
+    background-color: #00ca5b; /* Renk bir ton açılır */
+}
+
+/* 2. İçindeki Beyaz Yuvarlak İkonun Efekti */
+.green-call-card:hover .green-call-number i {
+    transform: scale(1.2) rotate(15deg); /* Telefon ikonu büyür ve yan yatar */
+    background-color: #f0f0f0; /* İkonun beyaz zemini hafif grileşir */
+    color: #00b853; /* İkonun rengi canlanır */
+    transition: all 0.3s ease;
+}
+
+/* 3. Numaranın Efekti */
+.green-call-card:hover .green-call-number span {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Yazı hafifçe parlar */
+}
+
+/* 4. Tıklama Anı (Active) */
+.green-call-card:active {
+    transform: translateY(-2px) scale(1.0); /* Basılma hissi verir */
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container">
+    <img src="logo.png" alt="Logo" style="height:45px;">
+    <div class="nav-links">
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">Hizmetler ▾</a>
+      <a href="#">Paketler</a>
+      <a href="#">Blog</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+    <div class="header-right">
+      <div class="header-cta-block">
+        <a href="#" class="reserve-btn">BAŞVUR</a>
+        <div class="header-phone">
+          <i class="fas fa-phone-alt"></i>
+          <div class="phone-text"><span>Bize Ulaşın</span><b>+49 567 114 3312</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1>Avrupa'da Güvenilir İş ve Yatırım Ortağınız</h1>
+    <p>AB dışı ülkelerden Almanya ve Avrupa'ya Personel, Yatırım ve Hukuki Danışmanlık</p>
+    <a href="#" class="btn primary">İşverenim</a>
+    <a href="#" class="btn secondary">Çalışmak İstiyorum</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Hizmetlerimiz</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">💼</div><h3>Nitelikli Personel Temini</h3><p>AB dışı ülkelerden Almanya'ya kalifiye personel yerleştirme.</p></div>
+      <div class="card"><div class="icon">🏢</div><h3>Yatırım & Şirket Kuruluşu</h3><p>Almanya'da şirket kurma ve yatırım danışmanlığı.</p></div>
+      <div class="card"><div class="icon">🛂</div><h3>Vize & Oturum Süreçleri</h3><p>Çalışma vizesi ve hukuki süreç yönetimi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="surec" class="section">
+  <div class="container">
+    <div class="process-header">
+      <div class="process-header-left">
+        <h3>🚀 OUR FEATURES</h3>
+        <h2>Committed to provide you the best services</h2>
+      </div>
+      <div class="process-header-right">
+        <a href="#" class="btn primary">Hemen Başvurun</a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <span class="process-card-icon">✓</span>
+        <h3 class="process-card-title">Quality Visa Services</h3>
+        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+      </div>
+      <div class="card">
+        <span class="process-card-icon">✓</span>
+        <h3 class="process-card-title">Professional & Expert Team</h3>
+        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+      </div>
+      <div class="card">
+        <span class="process-card-icon">✓</span>
+        <h3 class="process-card-title">100% Satisfaction Guaranteed</h3>
+        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container about-container">
+    <div class="about-left">
+      <a href="tel:+495671143312" style="text-decoration: none; display: block;">
+  <div class="green-call-card">
+    <div class="green-call-title">Bilgi için arayınız</div>
+    <div class="green-call-number">
+      <i class="fas fa-phone-alt"></i>
+      <span>+49 567 114 3312</span>
+    </div>
+  </div>
+</a>
+      <div class="about-image-wrapper"><img src="worker.jpg" alt="Worker"></div>
+      <div class="trust-card">
+        <div class="trust-label">Birlikte güçlenelim</div>
+        <div class="trust-number">NaN</div>
+       <div class="trust-countries">
+    <img src="tr.webp" alt="Türkiye" class="flag-icon">
+    <img src="gb.webp" alt="İngiltere" class="flag-icon">
+    <img src="de.webp" alt="Almanya" class="flag-icon">
+    <span class="plus-sign">+</span>
+</div>
+        <div class="trust-text">10-dan Fazla ülkede</div>
+        <div class="trust-service">Hizmet veriyoruz</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-tag">🚀 HAKKIMIZDA</div>
+      <h2 class="about-title">Avrupa'daki İş Hedeflerinizi Gerçeğe Dönüştürüyoruz</h2>
+      <div class="red-underline"></div>
+      <p class="about-description">Kızılay Trust Trading GmbH, AB dışı ülkeler ile Avrupa pazarı arasında personel temini, yatırım danışmanlığı ve şirket kuruluş hizmetleri sunmaktadır.</p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">📋</div>
+          <div class="feature-text">
+            <h4>Kapsamlı Vize Uygunluk</h4>
+            <h4>Değerlendirmesi</h4>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📝</div>
+          <div class="feature-text">
+            <h4>Uçtan Uca Hukuki ve</h4>
+            <h4>İdari Süreç Yönetimi</h4>
+          </div>
+        </div>
+      </div>
+      <div class="check-list">
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          Uzman göç danışmanları ile en hızlı vize başvuru süreci yönetimi
+        </div>
+        <div class="check-item">
+          <span class="check-icon">✓</span>
+          Dünya genelindeki eğitim kurumlarıyla iş birlikleri
+        </div>
+      </div>
+      <a href="#" class="btn primary">Başvurun</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-info-bar">
+    <div class="container">
+        <div class="info-item"><h4>Hemen Arayın</h4><p>+49 567 114 3312</p></div>
+        <div class="info-item"><h4>Çalışma Saatleri</h4><p>09.00 - 18.00</p></div>
+        <div class="info-item"><h4>Konum</h4><p>Köln, Almanya</p></div>
+    </div>
+</div>
+
+<footer>
+   <div class="container">
+    <div class="footer-main">
+        <div class="footer-col">
+            <a href="#" class="footer-logo" style="display: flex; align-items: center; gap: 10px;">
+                <img src="logofooter.png" alt="Kızılay Logo" style="height: 50px; width: auto;">
+            </a>
+            <p style="margin-top: 15px; color: #adb5bd; line-height: 1.6;">
+                Profesyonel danışmanlık ve personel temini süreçlerinde güvenilir ortağınız.
+            </p>
+            <div style="display: flex; gap: 12px; margin-top: 25px;">
+                <a href="#" class="social-icon-footer"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon-footer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>Hızlı Linkler</h3>
+            <ul>
+                <li><a href="#">› Hakkımızda</a></li>
+                <li><a href="#">› Hizmetlerimiz</a></li>
+                <li><a href="#">› İletişim</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Hizmetlerimiz</h3>
+            <ul>
+                <li><a href="#">› Çalışma İzni</a></li>
+                <li><a href="#">› Şirket Kuruluşu</a></li>
+                <li><a href="#">› Personel Temini</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Bültene Abone Ol</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="E-posta Adresiniz" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                <button type="submit" class="sub-btn"><i class="fas fa-paper-plane"></i> ABONE OL</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+        <div><a href="#" style="color:white; text-decoration:none; opacity: 0.8;">Gizlilik Politikası</a></div>
+        <div style="opacity: 0.9;">© 2026 Kızılay Trust Trading GmbH. Tüm Hakları Saklıdır.</div>
+    </div>
+</div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const aboutCounter = document.querySelector('.trust-number');
+    
+    if (aboutCounter) {
+        const target = 450; // Hedeflenen rakam
+        const duration = 3000; // 3 saniye (milisaniye cinsinden)
+        const startTime = performance.now();
+
+        const updateCount = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Sayıyı hesapla
+            const currentCount = Math.floor(progress * target);
+            
+            // NaN yerine rakamı yazdır
+            aboutCounter.innerText = currentCount;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCount);
+            } else {
+                // Bittiğinde tam rakamı ve + işaretini koy
+                aboutCounter.innerText = target + "+";
+            }
+        };
+
+        // Scroll izleyici: Sayfa o bölüme gelince başlasın
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    requestAnimationFrame(updateCount);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(aboutCounter);
+    }
+});
+</script>
+
+</body>
+</html>
