@@ -108,141 +108,163 @@ nav .container {
 .section h2 { font-size:42px; margin-bottom:60px; color:#1E355E; position:relative; display:inline-block; }
 .section h2::after { content:''; position:absolute; bottom:-15px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:linear-gradient(to right, #C73A3A, #ff6b6b); border-radius:2px; }
 
-/* --- KARTLAR (HİZMETLER) --- */
-.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:30px; max-width:1100px; margin:0 auto; }
-.card { background:white; padding:50px 30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08); position:relative; overflow:hidden; transition: 0.4s; }
-.icon { font-size:50px; margin-bottom:25px; }
-.card h3 { font-size:22px; margin-bottom:15px; color:#ffffff; }
 
 /* --- SÜREÇ BÖLÜMÜ (PREMIUM DARK BLUE) --- */
+/* --- HİZMETLER / SÜREÇ BÖLÜMÜ FINAL CSS --- */
 #surec {
-    background: #001e4d; /* Ana zemin rengi */
+    background: #001e4d;
     position: relative; 
     overflow: hidden; 
-    padding: 120px 0;
+    padding: 50px 0;
     color: white;
+    margin-top: 0 !important; 
+    padding-top: 80px; 
 }
 
 #surec::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* Sadece senin PNG görselin */
     background-image: url('dotsworld.png');
-    
-    background-position: center center; /* Görseli tam ortaya koyar */
-    background-repeat: no-repeat;       /* Görselin tekrar etmesini engeller */
-    background-size: contain;           /* Görselin tamamını kutuya sığdırır */
-    
-    opacity: 0.9; /* Görselin netliği (0.1 ile 1.0 arası ayarlanabilir) */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.3;
     z-index: 1;
 }
 
-/* İçeriğin görselin üstünde kalması için */
+/* Ana kapsayıcıyı dikey hizalıyoruz */
 #surec .container {
     position: relative;
     z-index: 2;
-}
-.process-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-end; 
-    margin-bottom: 60px; 
-    position: relative; 
-    z-index: 2;
-}
-
-.process-header-left h3 { 
-    color: #ef4444; 
-    font-size: 14px; 
-    font-weight: 700; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    margin-bottom: 15px;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    align-items: center; /* Her şeyi yatayda ortalar */
+    text-align: center;
 }
 
-/* Başlığın solundaki küçük uçak/ok ikonu */
-.process-header-left h3::before {
-    content: '\f1d8'; /* FontAwesome Paper Plane */
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+/* Başlık Alanı Düzenleme */
+.process-header { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 60px;
 }
 
 .process-header-left h2 { 
     font-size: 42px; 
-    line-height: 1.1; 
     font-weight: 700;
-    max-width: 500px;
+    color: #ffffff ;
+    margin: 0;
+    position: relative;
+    padding-bottom: 20px;
 }
 
-/* Kartlar ve Çizgi Yapısı */
+/* Başlığın altındaki kırmızı çizgi */
+.process-header-left h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #ef4444;
+}
+
+/* Mevcut HTML'deki buton alanını aşağıya itmek için flex order kullanıyoruz */
+.process-header-right {
+    order: 3; /* Grid'den sonra gelmesini sağlar */
+    margin-top: 50px;
+}
+
+/* Grid Yapısı */
 #surec .grid { 
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 0; /* Aradaki çizgileri birleştirmek için gap 0 */
-    position: relative;
-    z-index: 2;
+    gap: 40px; 
+    width: 100%;
+    order: 2; /* Başlıktan sonra, butondan önce gelir */
+    margin-top: -40px;
+    margin-bottom: 0px
 }
 
 #surec .card {
     background: transparent; 
     border: none; 
-    padding: 0 30px 40px 0; /* Sağdan boşluk bırakarak çizgiyi ayarlar */
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0px;
 }
 
-/* Görseldeki o meşhur kesikli çizgi ve lazer efekti */
-#surec .card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 90%; /* Çizginin uzunluğu */
-    height: 1px;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0.2) 0%, 
-        rgba(255,255,255,0.2) 50%, 
-        transparent 50%);
-    background-size: 10px 1px; /* Kesikli görünüm */
-}
-
-
+/* 45x45 İkon Kutusu - PNG Versiyonu */
 .process-card-icon { 
-    color: #ef4444; /* Görseldeki gibi check ikonları kırmızı */
-    font-size: 20px; 
+    width: 75px;
+    height: 75px;
+    border-radius: 99px;
     margin-bottom: 25px; 
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    color: transparent; /* İçindeki ✓ işaretini tamamen gizler */
+    
+    /* İkon Ayarları */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 48px; /* İkonun kutu içindeki büyüklüğü */
+}
+
+/* 1. Kartın İkonu */
+#surec .card:nth-child(1) .process-card-icon {
+    background-image: url('work.png');
+}
+
+/* 2. Kartın İkonu */
+#surec .card:nth-child(2) .process-card-icon {
+    background-image: url('visa.png');
+}
+
+/* 3. Kartın İkonu */
+#surec .card:nth-child(3) .process-card-icon {
+    background-image: url('invest.png');
+}
 }
 
 .process-card-title { 
-    font-size: 24px; 
+    font-size: 20px; 
     font-weight: 600; 
-    margin-bottom: 20px; 
+    margin-bottom: 15px; 
     color: white; 
+    line-height: 1.4;
+    min-height: 55px; /* Başlıkların aynı hizada başlaması için */
 }
 
 .process-card-description { 
     font-size: 15px; 
     line-height: 1.7; 
-    color: rgba(255,255,255,0.7); 
+    color: rgba(255, 255, 255, 0.7); 
 }
 
-/* Sağ üstteki kırmızı buton */
-.process-btn {
-    background: #ef4444;
-    color: white;
-    padding: 15px 35px;
-    border-radius: 50px; 
+/* "Hemen Başvurun" Butonu (HTML'indeki sınıflara göre) */
+#surec .btn.primary {
+    display: inline-block;
+    background: #ef4444 !important;
+    color: white !important;
+    padding: 15px 40px !important;
+    border-radius: 50px !important; 
     text-decoration: none;
     font-weight: 700;
-    font-size: 14px;
+    transition: 0.3s;
+    border: none;
+    margin-top: -20px;
 }
 
+#surec .btn.primary:hover {
+    background: #d43434 !important;
+    transform: translateY(-3px);
+}
 /* --- HAKKIMIZDA BÖLÜMÜ (GÖRSEL STYLE) --- */
 .about-section { 
   padding:120px 0; 
@@ -650,6 +672,208 @@ footer {
 .green-call-card:active {
     transform: translateY(-2px) scale(1.0); /* Basılma hissi verir */
 }
+
+/* FAQ Bölümü Genel Stil */
+#faq-section {
+    padding: 50px 30px;
+    background-color: #f9fafb; /* Açık gri arka plan, istersen beyaz yapabilirsin */
+    font-family: 'Inter', sans-serif;
+    margin-top: -30px;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-header h2 {
+    font-size: 36px;
+    color: #001e4d; /* Senin ana koyu mavini kullandım */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.faq-header p {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+/* Akkordiyon Tasarımı */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item[open] {
+    border-color: #ef4444; /* Açıldığında kırmızı çerçeve */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+summary {
+    list-style: none; /* Varsayılan oku gizle */
+    padding: 20px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+summary:hover {
+    color: #ef4444;
+}
+
+/* Kendi ok işaretimizi ekleyelim */
+summary::after {
+    content: '+';
+    font-size: 24px;
+    font-weight: 400;
+    color: #9ca3af;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    content: '−';
+    transform: rotate(180deg);
+    color: #ef4444;
+}
+
+.faq-content {
+    padding: 0 25px 20px 25px;
+    line-height: 1.7;
+    color: #4b5563;
+    font-size: 15px;
+    animation: slideDown 0.4s ease-out;
+}
+
+/* Açılış Animasyonu */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mission buradan basliyor */
+#mission-section {
+    padding: 0px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0px;
+}
+
+.mission-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.8fr; /* Üç bölmeli yapı */
+    align-items: center;
+    max-width: 100%;
+}
+
+/* Görsel Alanı */
+.mission-image img {
+    width: 100%;
+    height: 60vh; /* Ekran boyuna göre ayarlı */
+    object-fit: cover;
+    display: block;
+}
+
+/* Metin Alanı */
+.mission-text {
+    padding: 80px 60px;
+}
+
+.mission-text h2 {
+    font-size: 54px;
+    font-weight: 800;
+    color: #3b3e79; /* Görseldeki o morumsu lacivert */
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.mission-text h2 span {
+    color: #4a4d9a;
+}
+
+.mission-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Sağdaki Siyah Alıntı Kutusu */
+.mission-quote {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 80px 50px;
+    height: 65%; /* Görseldeki gibi biraz daha kısa durması için */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-right: 0px; /* Sağdaki ikonlar için boşluk */
+}
+
+.quote-icon {
+    font-size: 120px;
+    color: #ef4444; /* Senin kırmızı rengin */
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: serif;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.mission-quote p {
+    font-size: 16px;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.quote-author {
+    font-size: 14px;
+    color: #888;
+}
+
+.quote-author strong {
+    color: #ffffff;
+}
+
+/* Mobil Uyum */
+@media (max-width: 1024px) {
+    .mission-container {
+        grid-template-columns: 1fr;
+    }
+    .mission-image img {
+        height: 400px;
+    }
+    .mission-quote {
+        margin-right: 0;
+    }
+}
 </style>
 </head>
 
@@ -686,24 +910,33 @@ footer {
     <a href="#" class="btn secondary">Çalışmak İstiyorum</a>
   </div>
 </section>
+<section id="mission-section">
+    <div class="mission-container">
+        <div class="mission-image">
+            <img src="image1.jpg" alt="Ekibimiz">
+        </div>
 
-<section class="section">
-  <div class="container">
-    <h2>Hizmetlerimiz</h2>
-    <div class="grid">
-      <div class="card"><div class="icon">💼</div><h3>Nitelikli Personel Temini</h3><p>AB dışı ülkelerden Almanya'ya kalifiye personel yerleştirme.</p></div>
-      <div class="card"><div class="icon">🏢</div><h3>Yatırım & Şirket Kuruluşu</h3><p>Almanya'da şirket kurma ve yatırım danışmanlığı.</p></div>
-      <div class="card"><div class="icon">🛂</div><h3>Vize & Oturum Süreçleri</h3><p>Çalışma vizesi ve hukuki süreç yönetimi.</p></div>
+        <div class="mission-text">
+            <h2>Vizyonumuz & <br><span>Tarihçemiz</span></h2>
+            <p>Kızılay Trust Trading GmbH olarak, başta Türkiye, Azerbaycan, Irak, Filipinler ve Hindistan olmak üzere Avrupa Birliği üyesi olmayan çeşitli ülkelerden; Almanya başta olmak üzere Hollanda, Litvanya, Letonya, Polonya ve Bulgaristan gibi Avrupa Birliği üyesi ülkelere personel temini, zamanın verimli kullanımı, şirketlere yatırım ve finans danışmanlığı hizmeti sunmaktayız.
+
+Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılarla hizmet veriyor, anlaşmalı olduğumuz firmalardan bazılarını sunuyoruz:
+</p>
+        </div>
+
+        <div class="mission-quote">
+            <div class="quote-icon">“</div>
+            <p>Kızılay Trust Trading GmbH, Avrupa’daki şirketlere yalnızca personel değil, aynı zamanda güvenilir, stratejik ve sürdürülebilir yatırım ortaklıkları sunmayı hedeflemektedir. Bizimle iş birliği yaparak, iş gücünüzü büyütebilir ve yatırımlarınızı ileri taşıyabilirsiniz.</p>
+            <span class="quote-author">Genel Müdür: <strong>Avukat Metin Kızılay</strong></span>
+        </div>
     </div>
-  </div>
 </section>
 
 <section id="surec" class="section">
   <div class="container">
     <div class="process-header">
       <div class="process-header-left">
-        <h3>🚀 OUR FEATURES</h3>
-        <h2>Committed to provide you the best services</h2>
+        <h2>Hizmetlerimiz</h2>
       </div>
       <div class="process-header-right">
         <a href="#" class="btn primary">Hemen Başvurun</a>
@@ -712,18 +945,18 @@ footer {
     <div class="grid">
       <div class="card">
         <span class="process-card-icon">✓</span>
-        <h3 class="process-card-title">Quality Visa Services</h3>
-        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+        <h3 class="process-card-title">Şirketlerin nitelikli iş gücü ihtiyacını karşılamasını</h3>
+        <p class="process-card-description">Doğru yeteneklere hızlı ve etkin erişim sağlayarak şirketlerin rekabet gücünü artırıyoruz. Sektörel ihtiyaçlara uygun, sürdürülebilir insan kaynağı çözümleri sunuyoruz.</p>
       </div>
       <div class="card">
         <span class="process-card-icon">✓</span>
-        <h3 class="process-card-title">Professional & Expert Team</h3>
-        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+        <h3 class="process-card-title">Vize ve oturum süreçlerinin sorunsuz ilerlemesini</h3>
+        <p class="process-card-description">Tüm başvuru ve resmi işlemleri titizlikle yöneterek sürecin hatasız ve zamanında tamamlanmasını sağlıyoruz. Güncel mevzuata tam uyumlu, uçtan uca danışmanlık hizmeti sunuyoruz.</p>
       </div>
       <div class="card">
         <span class="process-card-icon">✓</span>
-        <h3 class="process-card-title">100% Satisfaction Guaranteed</h3>
-        <p class="process-card-description">Immigway Visa Consultancy was created to provide uniquely designed premium services in the world of education and migration.</p>
+        <h3 class="process-card-title">Yatırımların güvenli ve stratejik şekilde yönetilmesini sağlamaktadır</h3>
+        <p class="process-card-description">Riskleri minimize eden ve uzun vadeli değer yaratan yatırım stratejileri geliştiriyoruz. Finansal ve hukuki çerçevede güvenli, planlı ve sürdürülebilir büyüme sağlıyoruz.</p>
       </div>
     </div>
   </div>
@@ -791,13 +1024,57 @@ footer {
   </div>
 </section>
 
+
+<section id="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <h2>Sıkça Sorulan Sorular</h2>
+            <p>Sizler İçin Vize İşlemleri ve Pasaport İşlemleri İle İlgili Sıkça Sorulan Soruları Toparladık.</p>
+        </div>
+
+        <div class="faq-list">
+            <details class="faq-item" open>
+                <summary>Transit Vize başvuru sahibi olarak bilinmesi gereken önemli şeyler nelerdir?</summary>
+                <div class="faq-content">
+                    <p>Avrupa iş vizesi esas olarak Avrupa’daki iş toplantılarına, konferanslara katılmak isteyenler içindir. Vize sahiplerinin Avrupa’da çalışmasına veya iş aramasına izin verilmez. Kişiler ve koşullar, ticari vize başvurusunun ne kadar süreceğini etkiler.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Vizemi nasıl okuyup anlayabilirim?</summary>
+                <div class="faq-content">
+                    <p>Avrupa iş vizesi esas olarak Avrupa’daki iş toplantılarına, konferanslara katılmak isteyenler içindir. Vize sahiplerinin Avrupa’da çalışmasına veya iş aramasına izin verilmez. Kişiler ve koşullar, ticari vize başvurusunun ne kadar süreceğini etkiler.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Transit Vizenin işlenmesi ne kadar sürer?</summary>
+                <div class="faq-content">
+                    <p>İşlem süresi başvurunun yapıldığı döneme, kişiye ve koşullara göre etkilenmektedir. Genellikle ticari vize süreçleri konsolosluk yoğunluğuna göre değişir.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Mülakata alınacaksam arkadaşlarımı ve ailemi yanımda getirebilir miyim?</summary>
+                <div class="faq-content">
+                    <p>Vize mülakatları ve başvuru süreçleri kişiseldir. Koşullar başvuru sahibinin özel durumuna göre değerlendirilir, genellikle refakatçiye izin verilmez.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+
 <div class="footer-info-bar">
     <div class="container">
         <div class="info-item"><h4>Hemen Arayın</h4><p>+49 567 114 3312</p></div>
         <div class="info-item"><h4>Çalışma Saatleri</h4><p>09.00 - 18.00</p></div>
-        <div class="info-item"><h4>Konum</h4><p>Köln, Almanya</p></div>
+        <div class="info-item"><h4>Konum</h4><p>Königstraße 80, 47051 Duisburg, Almanya
+</p></div>
     </div>
 </div>
+
+
 
 <footer>
    <div class="container">
@@ -856,7 +1133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const aboutCounter = document.querySelector('.trust-number');
     
     if (aboutCounter) {
-        const target = 450; // Hedeflenen rakam
+        const target = 5000; // Hedeflenen rakam
         const duration = 3000; // 3 saniye (milisaniye cinsinden)
         const startTime = performance.now();
 
