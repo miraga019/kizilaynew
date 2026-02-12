@@ -86,6 +86,64 @@ nav .container {
 .phone-text span { display: block; font-size: 11px; opacity: 0.9; }
 .phone-text b { font-size: 14px; }
 
+/* --- Dil Dropdown --- */
+.lang-dropdown {
+  position: relative;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-right: -40px;
+}
+
+.lang-active {
+  padding: 6px 8px;
+  transition: 0.2s;
+  background-color: var(--primary-red);
+}
+
+
+/* Menü */
+.lang-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  padding: 8px 0;
+  min-width: 70px;
+  
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+  transition: 0.25s ease;
+  z-index: 1000;
+}
+
+/* Hover ile açılma */
+.lang-dropdown:hover .lang-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.lang-menu a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #444;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.lang-menu a:hover {
+  background: #f5f5f5;
+  color: var(--primary-red);
+}
+
+
 /* --- HERO & GENEL SECTION --- */
 .hero {
   position:relative;
@@ -265,7 +323,9 @@ nav .container {
     background: #d43434 !important;
     transform: translateY(-3px);
 }
-/* --- HAKKIMIZDA BÖLÜMÜ (GÖRSEL STYLE) --- */
+
+
+/* --- Randevu Formu tarafi --- */
 .about-section { 
   padding:120px 0; 
   background:#f5f5f5; 
@@ -336,24 +396,18 @@ nav .container {
 .trust-card {
   position:absolute;
   bottom:30px;
-  left:30px;
+  left:-60px;
   background:white;
   padding:25px 30px;
   border-radius:16px;
   box-shadow:0 20px 50px rgba(0,0,0,0.15);
-  min-width:260px;
+  min-width:150px;
   z-index:10;
 }
 .trust-label {
   font-size:13px;
   color:#666;
   margin-bottom:8px;
-}
-.trust-number {
-  font-size:36px;
-  font-weight:700;
-  color:#1e3c72;
-  margin-bottom:15px;
 }
 .trust-countries {
   display:flex;
@@ -380,86 +434,86 @@ nav .container {
 }
 
 /* Sağ Taraf İçerik */
-.about-right {
-  padding-left:20px;
+.about-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark-blue);
+  margin-bottom: 18px;
+  margin-left: 0; /* -20px'i kaldırın */
+  line-height: 1.3;
+  text-align: center; /* Metni ortala */
 }
-.about-tag { 
-  color:#ef4444; 
-  font-size:12px; 
-  font-weight:700; 
-  text-transform:uppercase; 
-  letter-spacing:1.5px;
-  margin-bottom:15px; 
-  display:flex; 
-  align-items:center; 
-  gap:8px; 
+
+.appointment-form {
+  margin-top: 25px;
+  margin-left: 0; /* -20px'i kaldırın */
+  background: white;
+  padding: 22px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.about-title { 
-  font-size:42px; 
-  line-height:1.2; 
-  color:#1E355E; 
-  margin-bottom:15px;
-  font-weight:700;
+
+.appointment-form input,
+.appointment-form select {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: 0.2s ease;
+  background: #fafafa;
+  box-sizing: border-box; /* ← Bunu ekleyin */
 }
-.red-underline {
-  width:60px;
-  height:3px;
-  background:#ef4444;
-  margin-bottom:25px;
+
+.appointment-form input:focus,
+.appointment-form select:focus {
+  border-color: var(--primary-red);
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(199,58,58,0.1);
 }
-.about-description {
-  font-size:15px;
-  line-height:1.8;
-  color:#666;
-  margin-bottom:30px;
+
+.form-row {
+  display: flex;
+  gap: 10px;
 }
-.feature-grid { 
-  display:grid; 
-  grid-template-columns:1fr 1fr; 
-  gap:25px; 
-  margin-bottom:30px; 
+
+.form-row input {
+  flex: 1;
 }
-.feature-item { 
-  display:flex; 
-  align-items:flex-start; 
-  gap:15px; 
+
+.appointment-form select {
+  cursor: pointer;
 }
-.feature-icon { 
-  width:50px; 
-  height:50px; 
-  background:#fef2f2; 
-  border-radius:12px; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  flex-shrink:0; 
-  font-size:24px; 
+
+.appointment-form button {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px;
+  background: var(--primary-red);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-sizing: border-box;
 }
-.feature-text h4 {
-  font-size:15px;
-  font-weight:700;
-  color:#1E355E;
-  margin:0;
-  line-height:1.4;
+
+.appointment-form button:hover {
+  background: #a63838;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(199,58,58,0.3);
 }
-.check-list {
-  margin-bottom:35px;
-}
-.check-item {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:15px;
-  font-size:14px;
-  color:#555;
-}
-.check-item:last-child {
-  margin-bottom:0;
-}
-.check-icon {
-  color:#ef4444;
-  font-size:18px;
-  flex-shrink:0;
+
+.appointment-form button:active {
+  transform: translateY(0);
 }
 
 /* --- YENİ FOOTER (GÖRSEL 1 STYLE) --- */
@@ -778,11 +832,11 @@ summary::after {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    margin-top: 0px;
+    margin-top: -70px;
 }
 
 .mission-container {
-    display: grid;
+    display: grid;  
     grid-template-columns: 1.2fr 1fr 0.8fr; /* Üç bölmeli yapı */
     align-items: center;
     max-width: 100%;
@@ -791,7 +845,7 @@ summary::after {
 /* Görsel Alanı */
 .mission-image img {
     width: 100%;
-    height: 60vh; /* Ekran boyuna göre ayarlı */
+    height: 50vh; /* Ekran boyuna göre ayarlı */
     object-fit: cover;
     display: block;
 }
@@ -825,7 +879,7 @@ summary::after {
     background: #1a1a1a;
     color: #ffffff;
     padding: 80px 50px;
-    height: 65%; /* Görseldeki gibi biraz daha kısa durması için */
+    height: 50%; /* Görseldeki gibi biraz daha kısa durması için */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -874,6 +928,412 @@ summary::after {
         margin-right: 0;
     }
 }
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroller {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  padding: 30px 0;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  width: 220px;
+  margin: 0 30px;
+}
+
+.logo-item img {
+  width: 85%;
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+
+
+
+
+/* 4 adim process Nasıl Çalışıyoruz? */
+
+.working-process-section {
+  padding: 35px 0;
+  background-image: url('bg-europe.png');
+  background-color: #797979;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Üzerine hafif overlay eklemek isterseniz */
+.working-process-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9); /* Beyaz transparan katman */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Üst Başlık */
+.process-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.process-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 24px;
+  border-radius: 30px;
+  border: 2px solid var(--primary-red);
+  margin-bottom: 20px;
+}
+
+.badge-icon {
+  color: var(--primary-red);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.badge-text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+.process-main-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Adımlar Container */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  position: relative;
+}
+
+/* Her Bir Kart */
+.process-card {
+  text-align: center;
+  position: relative;
+}
+
+/* İkon Wrapper */
+.card-icon-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* İkon Dairesi */
+.icon-circle {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  background: white;
+  border: 3px dashed var(--primary-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.icon-circle i {
+  font-size: 48px;
+  color: var(--primary-red);
+}
+
+/* Noktalı Çizgi (İkondan kartlara) */
+.dotted-line {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30px;
+  background-image: linear-gradient(to bottom, var(--primary-red) 50%, transparent 50%);
+  background-size: 2px 8px;
+  background-repeat: repeat-y;
+}
+
+/* Ok işareti (son adımda) */
+.dotted-arrow::after {
+  content: '↗';
+  position: absolute;
+  right: -40px;
+  top: -20px;
+  font-size: 32px;
+  color: var(--primary-red);
+}
+
+/* Hover Efekti */
+.process-card:hover .icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(199,58,58,0.2);
+  border-color: var(--primary-red);
+  border-style: solid;
+}
+
+/* Kart İçeriği */
+.card-content {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+}
+
+.process-card:hover .card-content {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+}
+
+/* Step Label */
+.step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-red);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Kart Başlığı */
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+/* Kart İçeriği */
+.card-content {
+  background: white;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+  min-height: 180px; /* ← Bu satırı ekleyin */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* İçeriği dikeyde ortala */
+}
+
+/* Açıklama */
+.card-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Ok Connector (kartlar arası) */
+.arrow-connector {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: -8px;
+  opacity: 0.3;
+}
+
+.arrow-connector i {
+  font-size: 18px;
+  color: #333;
+}
+
+.process-card:last-child .arrow-connector {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 30px;
+  }
+  
+  .arrow-connector {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .process-main-title {
+    font-size: 32px;
+  }
+  
+  .icon-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .icon-circle i {
+    font-size: 40px;
+  }
+}
+
+
+/* stats İstatistik */
+.stats-section {
+  padding: 80px 0;
+  background-image: url('darkblue.jpg'); /* Sizin hazırlayacağınız */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Parallax efekti */
+  position: relative;
+  color: white;
+}
+
+/* Koyu overlay (arka planı hafif koyulaştırır) */
+.stats-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Siyah %60 transparan */
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Başlık */
+.stats-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.title-underline {
+  width: 600px;
+  height: 3px;
+  background: var(--primary-red);
+  margin: 0 auto 60px;
+  border-radius: 10px; /* Sadece kenarlar oval */
+}
+
+/* İstatistik Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+/* Her bir istatistik */
+.stat-item {
+  position: relative;
+}
+
+/* Sayılar */
+.stat-number {
+  font-size: 72px;
+  font-weight: 800;
+  color: #ffffff; /* Altın sarısı */
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+}
+
+.stat-item:hover .stat-number {
+  transform: scale(1.1);
+  color: #be1515;
+}
+
+/* Açıklamalar */
+.stat-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
+  }
+  
+  .stats-title {
+    font-size: 32px;
+  }
+  
+  .title-underline {
+    width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .stat-number {
+    font-size: 56px;
+  }
+  
+  .stats-title {
+    font-size: 28px;
+  }
+  
+  .title-underline {
+    width: 90%;
+  }
+}
+
+
 </style>
 </head>
 
@@ -882,6 +1342,7 @@ summary::after {
 <nav>
   <div class="container">
     <img src="logo.png" alt="Logo" style="height:45px;">
+    
     <div class="nav-links">
       <a href="#">Ana Sayfa</a>
       <a href="#">Hakkımızda</a>
@@ -889,18 +1350,35 @@ summary::after {
       <a href="#">Paketler</a>
       <a href="#">Blog</a>
       <a href="#iletisim">İletişim</a>
+
+      <!-- Dil Dropdown -->
+      <div class="lang-dropdown">
+        <div class="lang-active">
+          TR ▾
+        </div>
+        <div class="lang-menu">
+          <a href="#">TR</a>
+          <a href="#">EN</a>
+          <a href="#">DE</a>
+        </div>
+      </div>
     </div>
+
     <div class="header-right">
       <div class="header-cta-block">
         <a href="#" class="reserve-btn">BAŞVUR</a>
         <div class="header-phone">
           <i class="fas fa-phone-alt"></i>
-          <div class="phone-text"><span>Bize Ulaşın</span><b>+49 567 114 3312</b></div>
+          <div class="phone-text">
+            <span>Bize Ulaşın</span>
+            <b>+49 567 114 3312</b>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </nav>
+
 
 <section class="hero">
   <div class="container">
@@ -910,6 +1388,8 @@ summary::after {
     <a href="#" class="btn secondary">Çalışmak İstiyorum</a>
   </div>
 </section>
+
+
 <section id="mission-section">
     <div class="mission-container">
         <div class="mission-image">
@@ -931,6 +1411,8 @@ Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılar
         </div>
     </div>
 </section>
+
+
 
 <section id="surec" class="section">
   <div class="container">
@@ -962,6 +1444,140 @@ Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılar
   </div>
 </section>
 
+
+<!-- HTML -->
+<section class="working-process-section">
+  <div class="container">
+    
+    <!-- Üst Başlık -->
+    <div class="process-header">
+      <div class="process-badge">
+        <span class="badge-icon">»</span>
+        <span class="badge-text">4 Adımda</span>
+      </div>
+      <h2 class="process-main-title">Nasıl Çalışıyoruz?<br>
+    </div>
+
+    <!-- Adımlar -->
+    <div class="process-steps">
+      
+      <!-- Adım 1 -->
+      <div class="process-card">
+        <div class="card-icon-wrapper">
+          <div class="icon-circle">
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="dotted-line"></div>
+        </div>
+        <div class="card-content">
+          <div class="step-label">ADIM 01</div>
+          <h3 class="card-title">Ön Analiz</h3>
+          <p class="card-description">İhtiyaç tespiti ve uygunluk değerlendirmesi</p>
+        </div>
+        <div class="arrow-connector">
+          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <!-- Adım 2 -->
+      <div class="process-card">
+        <div class="card-icon-wrapper">
+          <div class="icon-circle">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <div class="dotted-line"></div>
+        </div>
+        <div class="card-content">
+          <div class="step-label">ADIM 02</div>
+          <h3 class="card-title">Aday/Proje Seçimi</h3>
+          <p class="card-description">En uygun adayların veya yatırım fırsatlarının belirlenmesi</p>
+        </div>
+        <div class="arrow-connector">
+          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <!-- Adım 3 -->
+      <div class="process-card">
+        <div class="card-icon-wrapper">
+          <div class="icon-circle">
+            <i class="fas fa-file-signature"></i>
+          </div>
+          <div class="dotted-line"></div>
+        </div>
+        <div class="card-content">
+          <div class="step-label">ADIM 03</div>
+          <h3 class="card-title">Resmi Süreç Yönetimi</h3>
+          <p class="card-description">Vize, izin ve hukuki işlemlerin takibi</p>
+        </div>
+        <div class="arrow-connector">
+          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <!-- Adım 4 -->
+      <div class="process-card">
+        <div class="card-icon-wrapper">
+          <div class="icon-circle">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div class="dotted-line dotted-arrow"></div>
+        </div>
+        <div class="card-content">
+          <div class="step-label">ADIM 04</div>
+          <h3 class="card-title">Operasyon & Destek</h3>
+          <p class="card-description">Sürekli destek ve danışmanlık</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- HTML -->
+<section class="stats-section">
+  <div class="container">
+    
+    <!-- Başlık -->
+    <h2 class="stats-title">Binlerce İnsan Hizmetlerimizi Tercih Ediyor</h2>
+    <div class="title-underline"></div>
+
+    <!-- İstatistikler -->
+    <div class="stats-grid">
+      
+      <!-- Stat 1 -->
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label"> Başarılı Personel Yerleştirme</div>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Partner Firma</div>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Ülkede Aktif Operasyon</div>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="stat-item">
+        <div class="stat-number">2M+</div>
+        <div class="stat-label">Euro Yatırım Danışmanlığı</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <section class="about-section">
   <div class="container about-container">
     <div class="about-left">
@@ -977,7 +1593,6 @@ Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılar
       <div class="about-image-wrapper"><img src="worker.jpg" alt="Worker"></div>
       <div class="trust-card">
         <div class="trust-label">Birlikte güçlenelim</div>
-        <div class="trust-number">NaN</div>
        <div class="trust-countries">
     <img src="tr.webp" alt="Türkiye" class="flag-icon">
     <img src="gb.webp" alt="İngiltere" class="flag-icon">
@@ -988,42 +1603,59 @@ Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılar
         <div class="trust-service">Hizmet veriyoruz</div>
       </div>
     </div>
-    <div class="about-right">
-      <div class="about-tag">🚀 HAKKIMIZDA</div>
-      <h2 class="about-title">Avrupa'daki İş Hedeflerinizi Gerçeğe Dönüştürüyoruz</h2>
-      <div class="red-underline"></div>
-      <p class="about-description">Kızılay Trust Trading GmbH, AB dışı ülkeler ile Avrupa pazarı arasında personel temini, yatırım danışmanlığı ve şirket kuruluş hizmetleri sunmaktadır.</p>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-icon">📋</div>
-          <div class="feature-text">
-            <h4>Kapsamlı Vize Uygunluk</h4>
-            <h4>Değerlendirmesi</h4>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">📝</div>
-          <div class="feature-text">
-            <h4>Uçtan Uca Hukuki ve</h4>
-            <h4>İdari Süreç Yönetimi</h4>
-          </div>
-        </div>
-      </div>
-      <div class="check-list">
-        <div class="check-item">
-          <span class="check-icon">✓</span>
-          Uzman göç danışmanları ile en hızlı vize başvuru süreci yönetimi
-        </div>
-        <div class="check-item">
-          <span class="check-icon">✓</span>
-          Dünya genelindeki eğitim kurumlarıyla iş birlikleri
-        </div>
-      </div>
-      <a href="#" class="btn primary">Başvurun</a>
+ <div class="about-right">
+  <h2 class="about-title">Avrupa'daki İş Hedeflerinizi Gerçeğe Dönüştürüyoruz</h2>
+
+  <form class="appointment-form">
+    <div class="form-row">
+      <input type="text" placeholder="Adınız" required>
+      <input type="text" placeholder="Soyadınız" required>
     </div>
-  </div>
+
+    <input type="text" placeholder="Yaşadığınız Şehir">
+
+    <input type="tel" placeholder="Telefon" required>
+
+    <select required>
+      <option value="">Gidiş Amacı</option>
+      <option>Çalışma</option>
+      <option>Yatırım</option>
+      <option>Eğitim</option>
+      <option>Şirket Kuruluşu</option>
+      <option>Diğer</option>
+    </select>
+
+    <input type="text" placeholder="Gidilecek Yer">
+
+    <button type="submit" class="btn primary">Randevu Talep Et</button>
+  </form>
+</div>
+
 </section>
 
+<div class="logo-scroller">
+  <div class="logo-track">
+    
+    <!-- SET 1 -->
+    <div class="logo-item"><img src="lg1.png"></div>
+    <div class="logo-item"><img src="lg2.png"></div>
+    <div class="logo-item"><img src="lg3.png"></div>
+    <div class="logo-item"><img src="lg4.png"></div>
+    <div class="logo-item"><img src="lg5.png"></div>
+    <div class="logo-item"><img src="lg6.png"></div>
+    <div class="logo-item"><img src="lg7.png"></div>
+
+    <!-- SET 2 (AYNISI) -->
+    <div class="logo-item"><img src="lg1.png"></div>
+    <div class="logo-item"><img src="lg2.png"></div>
+    <div class="logo-item"><img src="lg3.png"></div>
+    <div class="logo-item"><img src="lg4.png"></div>
+    <div class="logo-item"><img src="lg5.png"></div>
+    <div class="logo-item"><img src="lg6.png"></div>
+    <div class="logo-item"><img src="lg7.png"></div>
+
+  </div>
+</div>
 
 <section id="faq-section">
     <div class="faq-container">
@@ -1129,45 +1761,82 @@ Geniş uluslararası ağımız sayesinde Avrupa pazarına güçlü bağlantılar
 </footer>
 
 <script>
+
+
+// Sayaç Animasyonu (M ve K destekli)
 document.addEventListener("DOMContentLoaded", function () {
-    const aboutCounter = document.querySelector('.trust-number');
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let animated = false;
+
+  const parseNumber = (text) => {
+    const hasPlus = text.includes('+');
+    const hasM = text.includes('M');
+    const hasK = text.includes('K');
     
-    if (aboutCounter) {
-        const target = 5000; // Hedeflenen rakam
-        const duration = 3000; // 3 saniye (milisaniye cinsinden)
-        const startTime = performance.now();
+    let number = parseFloat(text.replace(/[+MK]/g, ''));
+    
+    if (hasM) number *= 1000000;
+    if (hasK) number *= 1000;
+    
+    return { number, hasPlus, hasM, hasK };
+  };
 
-        const updateCount = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Sayıyı hesapla
-            const currentCount = Math.floor(progress * target);
-            
-            // NaN yerine rakamı yazdır
-            aboutCounter.innerText = currentCount;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCount);
-            } else {
-                // Bittiğinde tam rakamı ve + işaretini koy
-                aboutCounter.innerText = target + "+";
-            }
-        };
-
-        // Scroll izleyici: Sayfa o bölüme gelince başlasın
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    requestAnimationFrame(updateCount);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(aboutCounter);
+  const formatNumber = (num, hasM, hasK) => {
+    if (hasM) {
+      return (num / 1000000).toFixed(1) + 'M';
     }
+    if (hasK) {
+      return (num / 1000).toFixed(0) + 'K';
+    }
+    return Math.floor(num).toString();
+  };
+
+  const animateCounters = () => {
+    statNumbers.forEach(stat => {
+      const text = stat.innerText;
+      const { number: targetNumber, hasPlus, hasM, hasK } = parseNumber(text);
+      const duration = 2000;
+      const startTime = performance.now();
+
+      const updateNumber = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentNumber = easeOutQuart * targetNumber;
+        
+        stat.innerText = formatNumber(currentNumber, hasM, hasK) + (hasPlus ? '+' : '');
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        } else {
+          stat.innerText = formatNumber(targetNumber, hasM, hasK) + (hasPlus ? '+' : '');
+        }
+      };
+      
+      requestAnimationFrame(updateNumber);
+    });
+  };
+
+  // Scroll ile başlat
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        animateCounters();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    observer.observe(statsSection);
+  }
 });
+
+
+
 </script>
 
 </body>
