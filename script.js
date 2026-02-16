@@ -116,3 +116,36 @@ document.addEventListener('click', (e) => {
     }
   }
 });
+
+// blog
+// Sadece blog.html'de çalışsın
+const blogGrid = document.getElementById('blog-grid');
+if (blogGrid) {
+  fetch('posts.json')
+    .then(r => r.json())
+    .then(posts => {
+      if (!posts.length) {
+        blogGrid.innerHTML = '<div class="blog-empty"><i class="fas fa-pen"></i><p>Henüz yazı eklenmemiş.</p></div>';
+        return;
+      }
+      blogGrid.innerHTML = posts.map(post => {
+        const img = post.kapak
+          ? '<img src="' + post.kapak + '" class="blog-card-img" alt="' + post.baslik + '" onerror="this.outerHTML=\'<div class=\\\"blog-card-img-placeholder\\\"><i class=\\\"fas fa-newspaper\\\"></i></div>\'">'
+          : '<div class="blog-card-img-placeholder"><i class="fas fa-newspaper"></i></div>';
+        return '<a href="' + post.id + '.html" class="blog-card">' +
+          img +
+          '<div class="blog-card-body">' +
+            '<div class="blog-card-meta">' +
+              '<span class="blog-card-tag">' + post.kategori + '</span>' +
+              '<span class="blog-card-date"><i class="fas fa-calendar-alt"></i> ' + post.tarih + '</span>' +
+            '</div>' +
+            '<h3>' + post.baslik + '</h3>' +
+            '<p>' + post.ozet + '</p>' +
+            '<span class="blog-card-link">Devamını Oku <i class="fas fa-arrow-right"></i></span>' +
+          '</div></a>';
+      }).join('');
+    })
+    .catch(() => {
+      blogGrid.innerHTML = '<div class="blog-empty"><i class="fas fa-exclamation-circle"></i><p>Yazılar yüklenemedi.</p></div>';
+    });
+}
